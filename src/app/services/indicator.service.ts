@@ -7,11 +7,11 @@ import { from,of, forkJoin } from 'rxjs';
 import { filter, mergeMap, mergeAll } from 'rxjs/operators';
 
 import { Indicator } from '../models/indicator';
+import {environment} from '../../environments/environment'
 
 @Injectable()
 export class IndicatorService {
   constructor(private http: HttpClient) { }
- configUrl = 'http://localhost:3000/indicators'; /*TODO передавать limit */
  COUNT_TOWERS = 8;
 
  hasBadValues(item) {
@@ -33,7 +33,7 @@ export class IndicatorService {
  }
 
   getIndicators() {
-      return this.http.get<Indicator[]>(this.configUrl, { observe: 'response' })
+      return this.http.get<Indicator[]>(environment.api_url+'\indicators', { observe: 'response' })
             .map(res => res.body
                           .slice(0, this.COUNT_TOWERS)
                           .filter((item) => this.hasBadValues(item))

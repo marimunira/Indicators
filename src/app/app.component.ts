@@ -22,7 +22,7 @@ export class AppComponent implements OnInit, OnDestroy {
   errorHandler(err) {
     console.log(err);
     this.data = [];
-    if (err.hasOwnProperty(status))
+    if (err.hasOwnProperty('status'))
         if (err.status === 0)
           this.errorMessage = "Потеряна связь с сервером.";
         else 
@@ -36,6 +36,7 @@ export class AppComponent implements OnInit, OnDestroy {
         .subscribe((res) => {
           this.data = res;
           this.errorMessage = '';
+          console.log(this.data[0])
         },
                   (err) => this.errorHandler(err));
     

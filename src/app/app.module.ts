@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { HttpClientModule }   from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+
+import { InMemTowerService } from '../api/db.service';
 
 import { AppComponent } from './app.component';
 import { TowerComponent } from './tower/tower.component';
@@ -23,7 +26,8 @@ registerLocaleData(localeRu, 'ru');
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(InMemTowerService, { delay: 0 }),
   ],
   providers: [IndicatorService, {
     provide: LOCALE_ID,
