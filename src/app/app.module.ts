@@ -10,7 +10,7 @@ import { TowerComponent } from './tower/tower.component';
 import { ProgressBarComponent } from './tower/progress-bar/progress-bar.component';
 
 import { IndicatorService} from './services/indicator.service';
-import { TruncatePipe} from './services/truncate';
+import { TruncatePipe} from './other/truncate.pipe';
 
 import { registerLocaleData } from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
