@@ -6,7 +6,7 @@ import { environment } from '../../environments/environment';
 
 import { Indicator } from '../models/indicator';
 import { CalculatedIndicator } from '../models/calculated-indicator';
-import { COUNT_TOWERS } from '../other/constants';
+import { COUNT_INDICATORS } from '../other/constants';
 
 import 'rxjs/add/operator/map';
 
@@ -36,7 +36,7 @@ export class IndicatorService {
   public getIndicators(): Observable<CalculatedIndicator[]> {
     return this.http.get<Indicator[]>(environment.api_url + '\indicators', { observe: 'response' })
       .map(res => res.body
-        .slice(0, COUNT_TOWERS)
+        .slice(0, COUNT_INDICATORS)
         .filter((item) => this.hasBadValues(item))
         .map((item) => ({
           value: item.value,
