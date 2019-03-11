@@ -32,16 +32,24 @@ export class IndicatorService {
       return 0;
   }
 
+  private checkEmptyArray(arr) {
+    if (arr.length === 0)
+      throw new Error('Нет данных.');
+  }
+
   public getIndicators(): Observable<CalculatedIndicator[]> {
-    return this.http.get<Indicator[]>(environment.api_url + '\indicators', { observe: 'response' })
-      .map(res => res.body
-        .slice(0, COUNT_INDICATORS)
-        .filter((item) => this.hasBadValues(item))
-        .map((item) => ({
-          value: item.value,
-          title: item.title,
-          percentage: this.getPercentage(item)
-        })));
+    return this.http.get<Indicator[]>(environment.api_url + 'indicators', { observe: 'response' })
+      .map(res => {
+        this.checkEmptyArray(res.body);
+        return res.body.slice(0, COUNT_INDICATORS)
+          .filter((item) => this.hasBadValues(item))
+          .map((item) => ({
+            value: item.value,
+            title: item.title,
+            percentage: this.getPercentage(item)
+          }));
+      })
+
 
   }
 }
