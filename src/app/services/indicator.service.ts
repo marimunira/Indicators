@@ -1,13 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
-import 'rxjs/add/operator/map';
-import { from,of, forkJoin } from 'rxjs';
-
-import { filter, mergeMap, mergeAll } from 'rxjs/operators';
+import {environment} from '../../environments/environment';
 
 import { Indicator } from '../models/indicator';
-import {environment} from '../../environments/environment'
+
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class IndicatorService {

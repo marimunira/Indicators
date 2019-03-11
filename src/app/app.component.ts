@@ -1,10 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import {TimerObservable} from "rxjs/observable/TimerObservable";
+import { TimerObservable } from "rxjs/observable/TimerObservable";
 import { Subscription } from "rxjs";
 
 import { IndicatorService } from "./services/indicator.service";
 
-import { Indicator } from './models/indicator';
 
 @Component({
   selector: 'app-root',
