@@ -3,7 +3,7 @@ import { TimerObservable } from "rxjs/observable/TimerObservable";
 import { Subscription } from "rxjs";
 
 import { IndicatorService } from "./services/indicator.service";
-
+import { REQUEST_INTERVAL } from './other/constants';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +16,7 @@ export class AppComponent implements OnInit, OnDestroy {
   data =[];
   errorMessage : String;
   private subscription: Subscription;
-  REQUEST_INTERVAL = 10000;
+  
 
   errorHandler(err) {
     console.log(err);
@@ -42,7 +42,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.subscription = TimerObservable.create(0, this.REQUEST_INTERVAL)
+    this.subscription = TimerObservable.create(0, REQUEST_INTERVAL)
           .subscribe(() => this.getData());
     /*this.getData();*/
   }
