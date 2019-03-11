@@ -6,8 +6,8 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemTowerService } from '../api/db.service';
 
 import { AppComponent } from './app.component';
-import { TowerComponent } from './tower/tower.component';
-import { ProgressBarComponent } from './tower/progress-bar/progress-bar.component';
+import { IndicatorComponent } from './indicator/indicator.component';
+import { ProgressBarComponent } from './indicator/progress-bar/progress-bar.component';
 
 import { IndicatorService} from './services/indicator.service';
 import { TruncatePipe} from './other/truncate.pipe';
@@ -20,7 +20,7 @@ registerLocaleData(localeRu, 'ru');
 @NgModule({
   declarations: [
     AppComponent,
-    TowerComponent,
+    IndicatorComponent,
     ProgressBarComponent,
     TruncatePipe
   ],

@@ -1,12 +1,13 @@
 import { Component, Input, OnInit} from '@angular/core';
 import { Indicator } from "../models/indicator"
+
 @Component({
-  selector: 'app-tower',
-  templateUrl: './tower.component.html',
-  styleUrls: ['./tower.component.css']
+  selector: 'app-indicator',
+  templateUrl: './indicator.component.html',
+  styleUrls: ['./indicator.component.css']
 })
 
-export class TowerComponent implements OnInit {
+export class IndicatorComponent implements OnInit {
 @Input() data;
   constructor() { }
 
