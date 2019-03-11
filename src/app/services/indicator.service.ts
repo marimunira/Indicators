@@ -2,17 +2,18 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/observable';
 
-import {environment} from '../../environments/environment';
+import { environment } from '../../environments/environment';
 
 import { Indicator } from '../models/indicator';
 import { CalculatedIndicator } from '../models/calculated-indicator';
+import { COUNT_TOWERS } from '../other/constants';
 
 import 'rxjs/add/operator/map';
 
 @Injectable()
 export class IndicatorService {
   constructor(private http: HttpClient) { }
- COUNT_TOWERS = 8;
+ 
 
  hasBadValues(item) {
    //console.log(item);
@@ -35,7 +36,7 @@ export class IndicatorService {
   getIndicators ():Observable<CalculatedIndicator[]>{
       return this.http.get<Indicator[]>(environment.api_url+'\indicators', { observe: 'response' })
             .map(res => res.body
-                          .slice(0, this.COUNT_TOWERS)
+                          .slice(0, COUNT_TOWERS)
                           .filter((item) => this.hasBadValues(item))
                           .map((item) => ({ value: item.value,
                                             title: item.title,
