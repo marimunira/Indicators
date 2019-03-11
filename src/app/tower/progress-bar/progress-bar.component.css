@@ -1,0 +1,6 @@
+.progress-success {
+    fill: var(--success-color);
+}
+.progress-warning {
+    fill: var(--warning-color);
+}

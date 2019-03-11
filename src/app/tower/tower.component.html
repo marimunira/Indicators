@@ -1,0 +1,7 @@
+<div class="tower-wrapper">
+    <p class="label">{{data.title | truncate}}</p>
+    <div [className]="hasWarning()">{{ data.percentage | percent:'.0-1'}}</div>
+    <app-progress-bar [progress]="data.percentage"></app-progress-bar>
+    <p class="label">Масса карналита</p>
+    <div [className]="hasWarning()">{{data.value | number:'.0-1'}}</div>
+</div>

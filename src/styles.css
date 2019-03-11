@@ -1,0 +1,16 @@
+:root {
+    --main-bg-color: #000000;
+    --font-color: #ffffff;
+    --success-color: #21b249;
+    --warning-color: #bb1616;
+    --medium-color: #616166;
+    --light-color: #9B9B9B;
+    --dark-color: #48484F;
+    --cover-color: #8b959f;
+    --rim-color: #cbcbcb;
+
+  }
+
+body {
+    margin: 0;
+}

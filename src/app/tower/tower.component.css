@@ -1,0 +1,27 @@
+.tower-wrapper {
+    text-align: center;
+    padding: 0 7px;
+}
+
+
+.label {
+    font-size: 10px;
+    height: 40px;       /*TODO*/
+    margin-bottom: 5px;
+}
+
+
+.value {
+    font-size: 20px;
+    text-align: center;
+    margin: 10px auto;
+    width: 50px;
+}
+
+.underline-success {
+    border-bottom: 2px var(--success-color) solid;
+}
+
+.underline-warning {
+    border-bottom: 2px var(--warning-color) solid;
+}

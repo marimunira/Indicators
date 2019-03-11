@@ -1,0 +1,21 @@
+.app-wrapper {
+    background-color: var(--main-bg-color);
+    min-height:  80vh;
+    color: var(--font-color);
+    padding: 80px 10%;
+}
+.data-list {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-basis: content;
+    justify-content: center;
+}
+
+.flex-item {
+    margin: auto;
+    max-width: 120px;
+    
+}
+.message {
+    text-align: center;
+}
