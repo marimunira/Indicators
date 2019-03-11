@@ -11,10 +11,13 @@ export class ProgressBarComponent implements OnInit {
 
   constructor() { }
 
- 
   ngOnInit() {
-
   }
-
+  
+  hasWarning(): string {
+    return this.progress < 1 && this.progress > 0 ?
+      'progress-success' :
+      'progress-warning';
+  }
 
 }

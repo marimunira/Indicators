@@ -87,7 +87,7 @@ points="259.3,711.4 199.4,634.8 336.7,634.8 276.7,711.4 "
 id="bottom" />
 <!-------------------------------------------------------------------->
 <rect id="progress"
-[attr.class]="progress!=1 && progress!=0 ? 'progress-success' : 'progress-warning'"
+[attr.class]="hasWarning()"
 x="209.60001"
 [attr.y]="625-395*progress"
 width="118.5"
