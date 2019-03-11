@@ -1,5 +1,5 @@
 export interface Indicator {
-    id: number;
+    readonly id: number;
     title: string;
     value: number;
     minvalue: number;
