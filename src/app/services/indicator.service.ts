@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/observable';
+
 import {environment} from '../../environments/environment';
 
 import { Indicator } from '../models/indicator';
+import { CalculatedIndicator } from '../models/calculated-indicator';
 
 import 'rxjs/add/operator/map';
 
@@ -29,14 +32,14 @@ export class IndicatorService {
         return 0;
  }
 
-  getIndicators() {
+  getIndicators ():Observable<CalculatedIndicator[]>{
       return this.http.get<Indicator[]>(environment.api_url+'\indicators', { observe: 'response' })
             .map(res => res.body
                           .slice(0, this.COUNT_TOWERS)
                           .filter((item) => this.hasBadValues(item))
                           .map((item) => ({ value: item.value,
                                             title: item.title,
-                                           percentage: this.getPercentage(item)})));
+                                            percentage: this.getPercentage(item)})));
             
   }
 }

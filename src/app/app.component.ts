@@ -1,8 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { TimerObservable } from "rxjs/observable/TimerObservable";
-import { Subscription } from "rxjs";
+import { TimerObservable } from 'rxjs/observable/TimerObservable';
+import { Subscription } from 'rxjs';
 
-import { IndicatorService } from "./services/indicator.service";
+import { IndicatorService } from './services/indicator.service';
+import { CalculatedIndicator } from './models/calculated-indicator';
 import { REQUEST_INTERVAL } from './other/constants';
 
 @Component({
@@ -13,7 +14,7 @@ import { REQUEST_INTERVAL } from './other/constants';
 export class AppComponent implements OnInit, OnDestroy {
   constructor( private indicatorService: IndicatorService){}
 
-  data =[];
+  data : CalculatedIndicator[];
   errorMessage : String;
   private subscription: Subscription;
   
