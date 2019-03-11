@@ -1,11 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TimerObservable } from 'rxjs/observable/TimerObservable';
 import { Subscription } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 import { IndicatorService } from './services/indicator.service';
 import { CalculatedIndicator } from './models/calculated-indicator';
 import { REQUEST_INTERVAL } from './other/constants';
-import { HttpErrorResponse } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-root',
