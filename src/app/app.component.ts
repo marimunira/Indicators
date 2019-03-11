@@ -17,7 +17,7 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(private indicatorService: IndicatorService) { }
 
   data: CalculatedIndicator[];
-  private errorMessage: string;
+  errorMessage: string;
   private subscription: Subscription;
 
 
