@@ -22,7 +22,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
 
   errorHandler(err :  HttpErrorResponse) : void {
-    console.log(err);
     this.data = [];
     if (err instanceof Error)
       this.errorMessage = err.message;
@@ -39,7 +38,6 @@ export class AppComponent implements OnInit, OnDestroy {
       .subscribe((res) => {
         this.data = res;
         this.errorMessage = '';
-        console.log(this.data[0])
       },
         (err) => this.errorHandler(err));
 
@@ -48,7 +46,6 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscription = TimerObservable.create(0, REQUEST_INTERVAL)
       .subscribe(() => this.getData());
-    /*this.getData();*/
   }
 
   ngOnDestroy() {

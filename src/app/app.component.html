@@ -2,17 +2,7 @@
     <div *ngIf="errorMessage">
       <p class="message">{{errorMessage}}</p>
     </div>
-  <!--<div *ngIf="data">
-  <mat-grid-list [cols]="data.length" rowHeight="800px"> 
-    <mat-grid-tile class="tower-wrapper"
-        *ngFor="let tower of data"
-        [colspan]="1"
-        [rowspan]="1">
-      <app-tower [data]="tower"></app-tower>
-    </mat-grid-tile>
-  </mat-grid-list>
-</div>-->
-
+    
   <div  class="data-list" *ngIf="data" >
     <div class="flex-item" *ngFor="let item of data">
       <app-indicator  [data]="item"></app-indicator>

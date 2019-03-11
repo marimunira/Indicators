@@ -16,7 +16,6 @@ export class IndicatorService {
 
 
   private hasBadValues(item: Indicator): boolean {
-    //console.log(item);
     if ((item.minvalue >= 0) && (item.value >= 0)
       && (item.minvalue <= item.maxvalue) && (item.maxvalue >= 0))
       return true;
