@@ -1,4 +1,6 @@
-import { Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+
+import { CalculatedIndicator } from '../models/calculated-indicator';
 
 @Component({
   selector: 'app-indicator',
@@ -7,17 +9,16 @@ import { Component, Input, OnInit} from '@angular/core';
 })
 
 export class IndicatorComponent implements OnInit {
-@Input() data;
+  @Input() data: CalculatedIndicator;
   constructor() { }
 
   ngOnInit() {
   }
 
-  hasWarning()
-  {
-    return this.data.percentage!=1 && this.data.percentage!=0 ? 
-                'value underline-success' : 
-                'value underline-warning';
+  hasWarning(): string {
+    return this.data.percentage != 1 && this.data.percentage != 0 ?
+      'value underline-success' :
+      'value underline-warning';
   }
 
 }

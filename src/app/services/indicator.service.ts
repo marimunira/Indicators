@@ -13,34 +13,36 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class IndicatorService {
   constructor(private http: HttpClient) { }
- 
 
- hasBadValues(item) {
-   //console.log(item);
-   if ((item.minvalue >= 0) && (item.value >= 0) 
-   && (item.minvalue <= item.maxvalue) && (item.maxvalue >=0))
-    return true;
-    else 
+
+  private hasBadValues(item: Indicator): boolean {
+    //console.log(item);
+    if ((item.minvalue >= 0) && (item.value >= 0)
+      && (item.minvalue <= item.maxvalue) && (item.maxvalue >= 0))
+      return true;
+    else
       throw new Error('Bad data from ' + item.title);
- }
+  }
 
- getPercentage(item) {
-   if ((item.maxvalue >= item.value) && (item.value >= item.minvalue))
-      return (item.value - item.minvalue)/(item.maxvalue - item.minvalue);
+  private getPercentage(item: Indicator): number {
+    if ((item.maxvalue >= item.value) && (item.value >= item.minvalue))
+      return (item.value - item.minvalue) / (item.maxvalue - item.minvalue);
     else if (item.maxvalue < item.value)
-        return 1;
-    else 
-        return 0;
- }
+      return 1;
+    else
+      return 0;
+  }
 
-  getIndicators ():Observable<CalculatedIndicator[]>{
-      return this.http.get<Indicator[]>(environment.api_url+'\indicators', { observe: 'response' })
-            .map(res => res.body
-                          .slice(0, COUNT_TOWERS)
-                          .filter((item) => this.hasBadValues(item))
-                          .map((item) => ({ value: item.value,
-                                            title: item.title,
-                                            percentage: this.getPercentage(item)})));
-            
+  public getIndicators(): Observable<CalculatedIndicator[]> {
+    return this.http.get<Indicator[]>(environment.api_url + '\indicators', { observe: 'response' })
+      .map(res => res.body
+        .slice(0, COUNT_TOWERS)
+        .filter((item) => this.hasBadValues(item))
+        .map((item) => ({
+          value: item.value,
+          title: item.title,
+          percentage: this.getPercentage(item)
+        })));
+
   }
 }

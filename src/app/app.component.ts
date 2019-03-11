@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { IndicatorService } from './services/indicator.service';
 import { CalculatedIndicator } from './models/calculated-indicator';
 import { REQUEST_INTERVAL } from './other/constants';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -12,39 +13,40 @@ import { REQUEST_INTERVAL } from './other/constants';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  constructor( private indicatorService: IndicatorService){}
+  constructor(private indicatorService: IndicatorService) { }
 
-  data : CalculatedIndicator[];
-  errorMessage : String;
+  data: CalculatedIndicator[];
+  errorMessage: string;
   private subscription: Subscription;
-  
 
-  errorHandler(err) {
+
+  errorHandler(err :  HttpErrorResponse) : void {
     console.log(err);
     this.data = [];
-    if (err.hasOwnProperty('status'))
-        if (err.status === 0)
-          this.errorMessage = "Потеряна связь с сервером.";
-        else 
-          this.errorMessage = err.status + ' ' + err.statusText;
-    else
+    if (err instanceof Error)
       this.errorMessage = err.message;
+    else
+      if (err.status === 0)
+        this.errorMessage = "Потеряна связь с сервером.";
+      else
+        this.errorMessage = err.status + ' ' + err.statusText;
+      
   }
 
-  getData() { 
+  getData() : void {
     this.indicatorService.getIndicators()
-        .subscribe((res) => {
-          this.data = res;
-          this.errorMessage = '';
-          console.log(this.data[0])
-        },
-                  (err) => this.errorHandler(err));
-    
+      .subscribe((res) => {
+        this.data = res;
+        this.errorMessage = '';
+        console.log(this.data[0])
+      },
+        (err) => this.errorHandler(err));
+
   }
 
   ngOnInit() {
     this.subscription = TimerObservable.create(0, REQUEST_INTERVAL)
-          .subscribe(() => this.getData());
+      .subscribe(() => this.getData());
     /*this.getData();*/
   }
 
