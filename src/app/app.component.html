@@ -1,10 +1,10 @@
 <div class="app-wrapper">
     <div *ngIf="errorMessage">
-      <p class="message">{{errorMessage}}</p>
+      <p class="text-center">{{errorMessage}}</p>
     </div>
     
-  <div  class="data-list" *ngIf="data" >
-    <div class="flex-item" *ngFor="let item of data">
+  <div  class="indicators-list-flexbox" *ngIf="data" >
+    <div class="indicator-item" *ngFor="let item of data">
       <app-indicator  [data]="item"></app-indicator>
     </div>
   </div>

@@ -16,9 +16,10 @@ export class IndicatorComponent implements OnInit {
   }
 
   hasWarning(): string {
-    return this.data.percentage != 1 && this.data.percentage != 0 ?
-      'value underline-success' :
-      'value underline-warning';
+    var res = 'value-wrapper big-font text-center ';
+    res = this.data.percentage != 1 && this.data.percentage != 0 ?
+      res + 'underline-success' : res + 'underline-warning';
+    return res;
   }
 
 }

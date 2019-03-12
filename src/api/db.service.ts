@@ -5,7 +5,7 @@ export class InMemTowerService implements InMemoryDbService {
     let indicators = [
         {
             "id": "1",
-            "title": "Уровень карналита в силосной  №1Ур ове  нь карналита в силосной башне №1Уровень карналита в силосной башне №1Уровень карналита в силосной башне №1",
+            "title": "Уровень карналита в силосной  №1Уровень карналита в силосной башне №1Уровень карналита в силосной башне №1Уровень карналита в силосной башне №1",
             "value": 700,
             "minvalue": 500,
             "maxvalue": 1800
@@ -20,7 +20,7 @@ export class InMemTowerService implements InMemoryDbService {
         {
             "id": "3",
             "title": "Уровень карналита в силосной башне №3",
-            "value": 88,
+            "value": 100,
             "minvalue": 0,
             "maxvalue": 100
         },
@@ -41,8 +41,8 @@ export class InMemTowerService implements InMemoryDbService {
         {
             "id": "6",
             "title": "Уровень карналита в силосной башне №6",
-            "value": 20.555522222,
-            "minvalue": 0,
+            "value": 88,
+            "minvalue": 50,
             "maxvalue": 100
         },
         {

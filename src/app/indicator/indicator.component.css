@@ -1,21 +1,36 @@
-.tower-wrapper {
-    text-align: center;
+.indicator-wrapper {
     padding: 0 7px;
 }
 
+@media (max-width: 1000px) { 
+    .title-wrapper {
+        height: 60px;
+        margin-bottom: 5px; 
+    }
+ }
 
-.label {
-    font-size: 10px;
-    height: 40px;       /*TODO*/
-    margin-bottom: 5px;
-}
+ @media (min-width: 1000px) { 
+    .title-wrapper {
+        height: 30px;
+        margin-bottom: 5px; 
+    }
+ }
 
-
-.value {
-    font-size: 20px;
-    text-align: center;
+.value-wrapper {
     margin: 10px auto;
     width: 50px;
+}
+
+.label-wrapper {
+    margin: 7px auto;
+}
+
+.small-font {
+    font-size: 10px;       
+}
+
+.big-font {
+    font-size: 16px;
 }
 
 .underline-success {
