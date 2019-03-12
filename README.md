@@ -1,27 +1,31 @@
 # Indicators
+SPA восьми индикаторов силосных башен. 
+Проект создан с помощью [Angular CLI](https://github.com/angular/angular-cli) version 7.3.4.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.4.
+##API
+В качестве API используется [Angular in-memory-web-api](https://github.com/angular/in-memory-web-api). Модель индикатора:
 
-## Development server
+```class Indicator {
+     public id: string;
+     public title: string;
+     public value: number;
+     public minValue: number;
+     public maxValue: number;
+}
+```
+Приложение каждые 10 секунд отправляет GET-запрос (подписка на события `TimerObservable`).
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Структура проекта
+В папке `api` содержится сервис, эмулирующий работу сервера. Клиентская часть приложения разбита на три компонента: в `app.component` производится вызов метода сервиса `indicator.service`, делающего запрос к "базе данных", `indicator.component` и `progress-bar.component` отвечают за оформление индикатора.
 
-## Code scaffolding
+## Верстка, оформление
+Для верстки макета с восьмью колонками применяются flexbox. Страница выглядит адекватно при изменении ширины экрана и при уменьшении количества индикаторов.
+Для изображения индикатора-башни используется SVG (взят из присланного макета, адаптирован за счет переиспользования повторяющихся элементов с помощью `<use>`).
+Статусная строка и индикатор реагируют изменением цвета на красный при достижении значений 0% и 100%. Все используемые цвета вынесены в CSS-переменные в корневой элемент дерева документа (может быть полезным при изменении цветовой палитры приложения).
+Поскольку заранее неизвестно, какой длины заголовок придет с сервера, title длиной более 70 символов обрезается с многоточием, чтобы не ломать верстку. Для форматирования заголовка и числовых значений используются `pipes`; также подключена русская локаль для корректного отображения десятичных разделителей и разделителей групп разрядов.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+## Обработка ошибок
+Внештатные ситуации - отключенный Javascript в браузере, отсутствие связи с сервером, серверные ошибки, некорректные данные, пустое тело ответа сервера - перехватываются обработчиком ошибок;выводится соответствующее сообщение на страницу.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
