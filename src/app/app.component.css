@@ -4,14 +4,20 @@
     color: var(--font-color);
     padding: 80px 10%;
 }
-
+@media ( min-width: 500px) {
 .indicators-list-flexbox {
     display: flex;
     flex-wrap: nowrap;
-    flex-basis: content;
     justify-content: center;
 }
-
+}
+@media ( max-width: 500px) {
+    .indicators-list-flexbox {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
 .indicator-item {
     margin: auto;
     max-width: 120px;
