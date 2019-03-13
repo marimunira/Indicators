@@ -10,6 +10,11 @@
     flex-wrap: nowrap;
     justify-content: center;
 }
+.indicator-item {
+    margin: auto;
+    max-width: 120px;
+    
+}
 }
 @media ( max-width: 500px) {
     .indicators-list-flexbox {
@@ -17,9 +22,10 @@
         flex-wrap: wrap;
         justify-content: center;
     }
-}
 .indicator-item {
-    margin: auto;
+    margin-top: 20px;
     max-width: 120px;
     
+}
+
 }
