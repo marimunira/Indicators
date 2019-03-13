@@ -7,7 +7,8 @@ SPA восьми индикаторов силосных башен.
 ## API
 В качестве API используется [Angular in-memory-web-api](https://github.com/angular/in-memory-web-api). Модель индикатора:
 
-```class Indicator {
+```
+class Indicator {
      public id: string;
      public title: string;
      public value: number;
